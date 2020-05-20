@@ -1,0 +1,23 @@
+app-about {
+    ion-content {
+        --ion-background-color:#fff;
+    }
+
+    ion-slides, ion-slide, ion-row {
+        height: 100%;
+    }
+
+    ion-buttons {
+        color: #385a64;
+    }
+
+    .swiper-pagination-bullet-active {
+        background: #009688;
+    }
+
+    .swiper-slide img {
+        max-width: 50% !important;
+    }
+
+}
+

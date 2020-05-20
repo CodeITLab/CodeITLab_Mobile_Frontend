@@ -1,0 +1,76 @@
+<!-- Default back button -->
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>Back
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+<ion-content>
+    <ion-slides pager="false" #aboutMeSlider>
+        <ion-slide padding>
+            <ion-text class="darker-green-text">
+                <img src="../../../assets/img/slides/about/second-slide.jpg" alt="Second Slide of About Me">
+                <h4>What is this?</h4>
+                <p>Hack This Quiz is made for <span class="bolded">learning purposes</span>.</p>
+                <p>It's a platform which provides <span class="bolded">fun</span>, yet educational examples of <span class="bolded">password encryption</span>, <span class="bolded">computer science</span> and general <span class="bolded">software engineering</span>.</p>
+                <p>It is suppossed to be made from a developer to developers.</p>
+                <ion-button class="green-fill" fill="outline" (click)="displayNextSlide()">
+                    Next
+                    <ion-icon name="arrow-round-forward"></ion-icon>
+                </ion-button>
+            </ion-text>
+        </ion-slide>
+        <ion-slide padding>
+            <ion-text class="darker-green-text">
+                <img src="../../../assets/img/slides/about/first-slide.jpg" alt="First Slide of About Me" routerLink="/">
+                <h4>How to play?</h4>
+                <p>The rules are quite simple.</p>
+                <p>1. The most important thing is to <br><span class="bolded">read the question thoroughly</span>.</p>
+                <p>2. <span class="bolded">Input the correct password</span> to<br> pass the question.</p>
+                <p>3. If needed, <span class="bolded">open the clue box</span>.</p>
+                <p>4. Just have fun and PLAY</p>
+                <ion-button class="green-fill" fill="outline" (click)="displayPreviousSlide()">
+                    <ion-icon name="arrow-round-back"></ion-icon>
+                    Back
+                </ion-button>
+                <ion-button class="green-fill" fill="outline" (click)="displayNextSlide()">
+                    Next
+                    <ion-icon name="arrow-round-forward"></ion-icon>
+                </ion-button>
+            </ion-text>
+        </ion-slide>
+        <ion-slide padding>
+            <ion-text class="darker-green-text">
+                <img src="../../../assets/img/slides/about/third-slide.jpg" alt="Play Quiz Slide">
+                <h4>Have fun!</h4>
+                <p>Above all, <span class="bolded">Hack This Quiz</span> was made for people to <span class="bolded">have fun</span> while coding.</p>
+                <p>Don't worry, <span class="bolded">learn & progress</span>.</p>
+                <p>I hope you'll enjoy this platform, as much as <span class="bolded">I enjoyed making it</span>.</p>
+                <p>I will make sure the platform grows and that <span class="bolded">we grow</span> with it.</p>
+                <ion-button class="green-fill" fill="outline" (click)="displayPreviousSlide()">
+                    <ion-icon name="arrow-round-back"></ion-icon>
+                    Back
+                </ion-button>
+                <ion-button class="green-fill" fill="outline" (click)="displayNextSlide()">
+                    Next
+                    <ion-icon name="arrow-round-forward"></ion-icon>
+                </ion-button>
+            </ion-text>
+        </ion-slide>
+        <ion-slide padding>
+            <ion-text class="darker-green-text">
+                <img src="../../../assets/img/slides/about/fourth-slide.jpg" alt="Thank you slide">
+                <p>I want to thank <a class="bolded" href="https://www.freepik.com/stories/">@Stories</a> on Freepik.</p>
+                <p>Without those beautiful illustrations this app wouldn't be what it is. </p>
+                <p>If you're looking for some beautiful illustrations for yourself, headed over to the <a class="bolded" href="https://www.freepik.com/stories/">@stories freepik profile</a> and see what you can find!</p>
+                <ion-button class="green-fill" fill="outline" (click)="displayPreviousSlide()">
+                    <ion-icon name="arrow-round-back"></ion-icon>
+                    Back
+                </ion-button>
+                <ion-button class="green-fill" fill="outline" routerLink="/category-selection">Play</ion-button>
+            </ion-text>
+        </ion-slide>
+    </ion-slides>
+</ion-content>

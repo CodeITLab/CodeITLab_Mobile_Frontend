@@ -1,0 +1,42 @@
+<!-- Default back button -->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>Back
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col style="margin-bottom: 5%;" class="ion-text-center" size="12" size-md>
+        <ion-text color="light">
+          <h4 class="green-text">
+            <span class="dark-green-highlight">&lt;</span> 
+            Categories <span class="dark-green-highlight">/&gt;</span>
+          </h4>
+          <p class="darker-green-text">Choose your desired category.</p>
+        </ion-text>
+      </ion-col>
+      <ion-slides pager="true" #categorySelectionSlider>
+        <ion-slide padding>
+          <ion-text color="light">
+            <img src="../../../assets/img/slides/homepage/3759159.jpg" alt="Admin Joe Category Banner">
+            <h2 class="green-text">Admin Joe</h2>
+            <p class="darker-green-text">Follow Joe on the journey to becoming the worlds best software engineer</p>
+            <ion-button class="green-fill" fill="outline" (click)="setSelectedCategoryIndex('admin-joe')" routerLink="/admin-joe">Play();</ion-button>
+          </ion-text>
+        </ion-slide>
+        <ion-slide padding>
+          <ion-text color="light">
+            <img src="../../../assets/img/slides/homepage/3759390.jpg" alt="What's This? category banner">
+            <h2 class="green-text">What's This?</h2>
+            <p class="darker-green-text">Solve the riddles, progress, learn and master the coding force</p>
+            <ion-button class="green-fill" fill="outline" (click)="setSelectedCategoryIndex('whats-this')" routerLink="/admin-joe">Play();</ion-button>
+          </ion-text>
+        </ion-slide>
+      </ion-slides>
+    </ion-row>
+  </ion-grid>
+</ion-content>

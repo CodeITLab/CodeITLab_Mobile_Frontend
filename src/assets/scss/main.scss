@@ -1,0 +1,20 @@
+@import 'abstracts/variables';
+
+@import 'base/fonts';
+@import 'base/typography';
+
+@import 'components/buttons';
+@import 'components/swiper';
+
+@import 'layout/header';
+@import 'layout/borders';
+
+@import 'pages/homepage';
+@import 'pages/about';
+@import 'pages/endgame';
+@import 'pages/categories';
+@import 'pages/admin-joe';
+
+* {
+    font-family: 'Righteous', cursive;
+}

@@ -1,0 +1,55 @@
+app-admin-joe, app-white-hatter {
+
+    ion-content {
+        --ion-background-color:#fff;
+    }
+
+    ion-buttons {
+        color: #385a64;
+    }
+
+    ion-item {
+        --highlight-color-focused: none;
+    }
+
+    ion-label {
+        color: #385a64 !important;
+    }
+
+    .item-interactive.ion-valid {
+        --highlight-background: #385a64 !important;
+    }
+
+    :host(.activated) .button-native {
+        color: white !important;
+    }
+
+    ion-grid {
+        height: 100%;
+    }
+
+    ion-slides {
+        height: 100%;
+    }
+
+}
+
+.bolded {
+    color: #009688;
+}
+
+.function-color {
+    color: $functionColor;
+} 
+
+.method-color {
+    color: $methodColor;
+}
+
+.alert-message.sc-ion-alert-md {
+    max-height: 290px !important;
+}
+
+.clue-content {
+    max-height: 290px !important;
+}

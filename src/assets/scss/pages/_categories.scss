@@ -1,0 +1,25 @@
+app-category-selection {
+
+    ion-content {
+        --ion-background-color:#fff;
+    }
+
+    ion-button {
+        width: 105px;
+        height: 40px;
+        margin-top: 10px;
+    }
+
+    ion-buttons {
+        color: #385a64;
+    }
+
+    .category {
+        border: 2px solid #009688;
+    }
+
+    .swiper-slide img {
+        max-width: 60% !important;
+    }
+
+}

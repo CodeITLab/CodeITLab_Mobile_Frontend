@@ -1,0 +1,46 @@
+<!-- Default back button -->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>Back
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>  
+  <ion-grid *ngIf="!isApplicationOfflineStatus">
+    <ion-slides pager="false" [options]="slideParams" #mySlider>
+      <ion-slide class="swiper-no-swiping" *ngFor="let data of selectedCategoryData">
+        <ion-row>
+          <ion-col class="ion-text-center" size="12">
+            <ion-text class="darker-green-text">
+              <p>Question</p>
+              <h4>{{ currentQuestionIndexValue }} / {{ numberOfQuestions }}</h4>
+            </ion-text>
+          </ion-col>
+          <ion-col class="ion-text-center" size="12">
+            <ion-text class="darker-green-text">
+              <h4>{{ data.mainTitle }}</h4>
+              <p><i>{{ data.subtitle }}</i></p>
+            </ion-text>
+          </ion-col>
+          <ion-col class="ion-text-center" size="12">
+            <ion-item>
+              <ion-label position="floating">Your answer</ion-label>
+              <ion-input [(ngModel)]="userInput"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button expand="block" class="green-fill" fill="outline" (click)="presentAlert()">Help</ion-button>
+          </ion-col>
+          <ion-col class="ion-text-center" size="6">
+            <ion-button expand="block" class="green-fill" fill="outline" (click)="isCorrectAnswer()">Submit</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-slide>
+    </ion-slides>
+  </ion-grid>
+  <ion-grid *ngIf="isApplicationOfflineStatus">
+    <app-offline-component></app-offline-component>
+  </ion-grid>
+</ion-content>

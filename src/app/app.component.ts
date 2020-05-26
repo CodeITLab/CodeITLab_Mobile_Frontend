@@ -13,9 +13,40 @@ export class AppComponent {
 
   navigate: any;
 
-  constructor() {
+  constructor(
+    private platform: Platform,
+    private splashScreen: SplashScreen,
+    private statusBar: StatusBar
+  ) {
+    this.sideMenuItems();
+    this.initializeApp();
   }
 
+  initializeApp() {
+    this.platform.ready().then(() => {
+      this.statusBar.styleDefault();
+      this.splashScreen.hide();
+    });
+  }
 
+  sideMenuItems() {
+    this.navigate = [
+      {
+        title : 'Home',
+        url   : '/',
+        icon  : 'home'
+      },
+      {
+        title : 'About',
+        url   : '/about',
+        icon  : 'chatboxes'
+      },
+      {
+        title : 'Play',
+        url   : '/category-selection',
+        icon  : 'contacts'
+      },
+    ]
+  }
 
 }

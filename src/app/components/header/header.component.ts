@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuController, Platform } from '@ionic/angular';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 
 @Component({
   selector: 'app-header',
@@ -7,8 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  navigationItems: any;
+
+  constructor(
+  ) {}
 
   ngOnInit() {}
+
 
 }

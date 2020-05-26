@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import * as firebase from 'firebase';
+import { LoginServiceService } from '../../services/authentication/login/login-service.service';
 
 
 @Component({
@@ -11,6 +12,7 @@ import * as firebase from 'firebase';
 export class HomepagePage implements OnInit {
 
   constructor(
+    public authService: LoginServiceService
     ) { }
 
   ngOnInit() {

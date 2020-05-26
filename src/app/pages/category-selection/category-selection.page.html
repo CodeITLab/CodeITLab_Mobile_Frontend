@@ -1,15 +1,12 @@
 <!-- Default back button -->
-<ion-header *ngIf="authService.user$ | async as user;">
+<ion-header>
   <ion-toolbar>
       <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
       </ion-buttons>
     <ion-title>
-      {{ user.displayName | json }}
+      Menu
     </ion-title>
-    <ion-avatar>
-      <img src="" alt="">
-    </ion-avatar>
   </ion-toolbar>
 </ion-header>
 

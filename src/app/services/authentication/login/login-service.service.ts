@@ -13,6 +13,7 @@ import { Observable, of } from 'rxjs';
 export class LoginServiceService {
 
   userData: UserModel;
+  userData$: Observable<UserModel>;
 
   constructor(
     private angularFireAuth: AngularFireAuth,
@@ -35,10 +36,12 @@ export class LoginServiceService {
       userData.user.emailVerified
     );
     this.createNewUser(this.userData);
+    console.log('User successfully created');
+    this.router.navigate(['/category-selection']);
   }
 
   createNewUser(user: UserModel) {
-    return this.angularFirestore.collection('users').add({...user});
+    return this.angularFirestore.collection('users').doc(`${user.uid}`).set({...user});
   }
 
   async signOut() {

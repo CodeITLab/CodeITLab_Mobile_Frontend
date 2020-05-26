@@ -3,6 +3,7 @@ import { IonSlides } from '@ionic/angular';
 import { SelectedCategoryService } from '../../services/category-selection/selected-category/selected-category.service';
 import { GameplayFlowService } from '../../services/gameplay-services/gameplay/gameplay-flow.service';
 import { LoginServiceService } from '../../services/authentication/login/login-service.service';
+import { UserModel } from 'src/app/models/user/user-model.model';
 
 @Component({
   selector: 'app-category-selection',

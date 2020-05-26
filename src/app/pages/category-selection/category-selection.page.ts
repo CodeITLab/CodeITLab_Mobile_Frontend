@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonSlides } from '@ionic/angular';
 import { SelectedCategoryService } from '../../services/category-selection/selected-category/selected-category.service';
 import { GameplayFlowService } from '../../services/gameplay-services/gameplay/gameplay-flow.service';
+import { LoginServiceService } from '../../services/authentication/login/login-service.service';
 
 @Component({
   selector: 'app-category-selection',
@@ -20,7 +21,8 @@ export class CategorySelectionPage implements OnInit {
   @ViewChild('categorySelectionSlider', {static: false}) nextSlide: IonSlides;
 
   constructor(
-    private gameplayService: SelectedCategoryService
+    private gameplayService: SelectedCategoryService,
+    private authService: LoginServiceService
   ) { }
 
   ngOnInit() {

@@ -3,40 +3,47 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { User, auth } from 'firebase';
+import { UserModel } from '../../../models/user/user-model.model';
+import { map, switchMap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginServiceService {
 
-  userData: any;
+  userData: UserModel;
 
   constructor(
     private angularFireAuth: AngularFireAuth,
+    private angularFirestore: AngularFirestore,
     private router: Router
   ) { }
 
-
-  // Sign in with Gmail
-  GoogleAuth() {
-    return this.AuthLogin(new auth.GoogleAuthProvider());
+  async googleSignIn() {
+    const provider = new auth.GoogleAuthProvider();
+    const credential = await this.angularFireAuth.auth.signInWithPopup(provider);
+    this.setUserData(credential);
   }
 
-  // Auth providers
-  AuthLogin(provider) {
-    return this.angularFireAuth.auth.signInWithPopup(provider)
-    .then((result) => {
-      console.log('You are logged in!', result);
-      this.router.navigateByUrl('category-selection');
-    }).catch((error) => {
-      console.log('Dogodila se greška.', error);
-    });
+  setUserData(userData) {
+    this.userData = new UserModel(
+      userData.user.uid,
+      userData.user.email,
+      userData.user.displayName,
+      userData.user.photoURL,
+      userData.user.emailVerified
+    );
+    this.createNewUser(this.userData);
   }
 
-  // Sign-out
-  SignOut() {
-    return this.angularFireAuth.auth.signOut().then(() => {
-      this.router.navigate(['']);
-    });
+  createNewUser(user: UserModel) {
+    return this.angularFirestore.collection('users').add({...user});
   }
+
+  async signOut() {
+    await this.angularFireAuth.auth.signOut();
+    return this.router.navigate(['/']);
+  }
+
 }

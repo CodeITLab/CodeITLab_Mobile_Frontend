@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import * as firebase from 'firebase';
-import { LoginServiceService } from 'src/app/services/authentication/login/login-service.service';
+import { LoginServiceService } from '../../services/authentication/login/login-service.service';
 
 
 @Component({

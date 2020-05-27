@@ -13,7 +13,7 @@ import { Observable, of } from 'rxjs';
 export class LoginServiceService {
 
   userData: UserModel;
-  userData$: Observable<UserModel>;
+  userData$: Observable<any>;
 
   constructor(
     private angularFireAuth: AngularFireAuth,
@@ -35,6 +35,7 @@ export class LoginServiceService {
       userData.user.photoURL,
       userData.user.emailVerified
     );
+    //this.userData$ = new Observable(this.userData);
     this.createNewUser(this.userData);
     this.router.navigate(['/category-selection']);
   }

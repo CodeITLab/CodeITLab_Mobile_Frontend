@@ -36,7 +36,6 @@ export class LoginServiceService {
       userData.user.emailVerified
     );
     this.createNewUser(this.userData);
-    console.log('User successfully created');
     this.router.navigate(['/category-selection']);
   }
 

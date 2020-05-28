@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { LoginServiceService } from './services/authentication/login/login-service.service';
 
 @Component({
   selector: 'app-root',
@@ -16,9 +17,9 @@ export class AppComponent {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    public authService: LoginServiceService
   ) {
-    this.sideMenuItems();
     this.initializeApp();
   }
 
@@ -27,26 +28,6 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
-  }
-
-  sideMenuItems() {
-    this.navigate = [
-      {
-        title : 'Home',
-        url   : '/',
-        icon  : 'home'
-      },
-      {
-        title : 'About',
-        url   : '/about',
-        icon  : 'chatboxes'
-      },
-      {
-        title : 'Play',
-        url   : '/category-selection',
-        icon  : 'contacts'
-      },
-    ]
   }
 
 }

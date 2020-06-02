@@ -96,6 +96,10 @@ export class AdminJoePage implements OnInit {
     this.userInput = '';
   }
 
+  whatsThisUserInput(correctAnswer) {
+    this.userInput = correctAnswer;
+  }
+
   // Display alert methods
 
   async presentAlert() {

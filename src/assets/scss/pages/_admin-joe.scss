@@ -1,11 +1,12 @@
-app-admin-joe, app-white-hatter {
+app-admin-joe {
 
     ion-content {
         --ion-background-color:#fff;
     }
 
-    ion-buttons {
+    ion-button {
         color: #385a64;
+        width: 35%;
     }
 
     ion-item {
@@ -32,6 +33,9 @@ app-admin-joe, app-white-hatter {
         height: 100%;
     }
 
+    .quiz-group-btn {
+        padding-top: 20px;
+    }
 }
 
 .bolded {

@@ -5,4 +5,5 @@ export class QuizDataModel {
     questionData: string;
     clueContent: string;
     category: string;
+    multipleChoice: string;
 }

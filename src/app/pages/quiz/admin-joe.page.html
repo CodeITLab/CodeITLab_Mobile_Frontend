@@ -24,17 +24,22 @@
               <p><i>{{ data.subtitle }}</i></p>
             </ion-text>
           </ion-col>
-          <ion-col class="ion-text-center" size="12">
+          <ion-col *ngIf="data.category === 'admin-joe'" class="ion-text-center" size="12">
             <ion-item>
               <ion-label position="floating">Your answer</ion-label>
               <ion-input [(ngModel)]="userInput"></ion-input>
             </ion-item>
+            <ion-row>
+              <ion-col class="ion-text-center quiz-group-btn" size="12" size-md>
+                <ion-button class="green-fill" fill="outline" (click)="presentAlert()">Help</ion-button>
+                <ion-button class="green-fill" fill="outline" (click)="isCorrectAnswer()">Submit</ion-button>
+              </ion-col>
+            </ion-row>
           </ion-col>
-          <ion-col size="6">
-            <ion-button expand="block" class="green-fill" fill="outline" (click)="presentAlert()">Help</ion-button>
-          </ion-col>
-          <ion-col class="ion-text-center" size="6">
-            <ion-button expand="block" class="green-fill" fill="outline" (click)="isCorrectAnswer()">Submit</ion-button>
+          <ion-col *ngIf="data.category === 'whats-this'" class="ion-text-center quiz-group-btn" size="12">
+            <ion-col *ngFor="let data of data.multipleChoice" size="6">
+              <ion-button class="green-fill" fill="outline" (click)="whatsThisUserInput(data); isCorrectAnswer()">{{ data }}</ion-button>
+            </ion-col>
           </ion-col>
         </ion-row>
       </ion-slide>

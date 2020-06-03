@@ -96,7 +96,7 @@ export class AdminJoePage implements OnInit {
   }
 
   isCorrectAnswer() {
-    this.gameplayService.isCorrectAnswer(this.userInput, this.selectedCategoryData, this.nextSlide);
+    this.gameplayService.checkAnswer(this.userInput, this.selectedCategoryData, this.nextSlide);
     this.userInput = '';
   }
 

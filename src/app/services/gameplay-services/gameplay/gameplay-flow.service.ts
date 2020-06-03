@@ -75,7 +75,7 @@ export class GameplayFlowService {
     });
   }
 
-  // Quiz Gameplay logic
+  // Data fetching
 
   subscribeToQuizData() {
     return this.databaseService.setQuizData().subscribe(result => {
@@ -88,20 +88,30 @@ export class GameplayFlowService {
     });
   }
 
-  isCorrectAnswer(userInputValue: string, categoryName: QuizDataModel[], nextSlide: IonSlides) {
-      if (userInputValue === categoryName[this.currentAnswerIndexValue].questionData) {
-        this.toastNotification.isValidAnswer('Correct answer!', 'success');
-        this.userScore.updateUserScoreValue(this.currentUserScore + 1);
+  // Gameplay Logic
+
+  checkAnswer(userInputValue: string, categoryName: QuizDataModel[], nextSlide: IonSlides) {
+      if (!userInputValue) {
+        this.toastNotification.isValidAnswer('Please input your answer.', 'warning');
       } else {
-        this.toastNotification.isValidAnswer('Wrong answer.', 'danger');
+        this.isCorrectAnswer(userInputValue, categoryName, nextSlide);
+        this.isEndgame(this.currentQuestionIndexValue, categoryName);
+        this.delayNextSlideAfterCorrectAnswer(userInputValue, nextSlide);
       }
-      this.isEndgame(this.currentQuestionIndexValue, categoryName);
-      this.delayNextSlideAfterCorrectAnswer(userInputValue, nextSlide);
   }
 
   isEndgame(currentQuestionIndexValue: number, quizCategory: QuizDataModel[]) {
     if (currentQuestionIndexValue === quizCategory.length) {
       this.router.navigateByUrl('/endgame');
+    }
+  }
+
+  isCorrectAnswer(userInput: string, category: QuizDataModel[], nextSlide: IonSlides) {
+    if (userInput === category[this.currentAnswerIndexValue].questionData) {
+      this.toastNotification.isValidAnswer('Correct answer!', 'success');
+      this.userScore.updateUserScoreValue(this.currentUserScore + 1);
+    } else {
+      this.toastNotification.isValidAnswer('Wrong answer.', 'danger');
     }
   }
 

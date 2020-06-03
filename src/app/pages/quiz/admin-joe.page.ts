@@ -9,6 +9,7 @@ import { IsOfflineServiceService } from '../../services/gameplay-services/is-app
 import { QuestionAnswerIndexService } from '../../services/gameplay-services/question-answer-index/question-answer-index.service';
 import { CategoryFilterService } from '../../services/category-selection/category-filter/category-filter.service';
 import { SelectedCategoryService } from '../../services/category-selection/selected-category/selected-category.service';
+import { UserScoreService } from 'src/app/services/gameplay-services/user-score/user-score.service';
 
 @Component({
   selector: 'app-admin-joe',
@@ -42,7 +43,8 @@ export class AdminJoePage implements OnInit {
     private isOffline: IsOfflineServiceService,
     private questionAnswerIndexService: QuestionAnswerIndexService,
     private categorySelectionService: SelectedCategoryService,
-    private categoryFilter: CategoryFilterService
+    private categoryFilter: CategoryFilterService,
+    private userScore: UserScoreService
     ) { }
 
   ngOnInit() {
@@ -53,6 +55,7 @@ export class AdminJoePage implements OnInit {
     this.getSelectedCategoryData();
     this.questionAnswerIndexService.updateQuestionIndexValue(1);
     this.questionAnswerIndexService.updateAnswerIndexValue(0);
+    this.userScore.updateUserScoreValue(0);
   }
 
   // Getters
@@ -81,6 +84,7 @@ export class AdminJoePage implements OnInit {
         this.selectedCategoryData = this.categoryFilter.filterByCategoryName(selectedCategoryData, this.selectedCategory);
         const numberOfSelectedQuestions = this.selectedCategoryData.length;
         this.numberOfQuestions = numberOfSelectedQuestions;
+        this.userScore.updateNumberOfQuestions(this.numberOfQuestions);
       }
     });
   }

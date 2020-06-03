@@ -10,6 +10,8 @@ import { IsOfflineServiceService } from '../is-application-offline/is-offline-se
 import { QuestionAnswerIndexService } from '../question-answer-index/question-answer-index.service';
 import { IonSlides } from '@ionic/angular';
 import { SelectedCategoryService } from '../../category-selection/selected-category/selected-category.service';
+import { UserModel } from 'src/app/models/user/user-model.model';
+import { UserScoreService } from '../user-score/user-score.service';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +24,7 @@ export class GameplayFlowService {
 
   public currentQuestionIndexValue: number;
   public currentAnswerIndexValue: number;
+  public currentUserScore: number;
 
   constructor(
     private router: Router,
@@ -29,11 +32,13 @@ export class GameplayFlowService {
     private toastNotification: ValidAnswerService,
     private isOffline: IsOfflineServiceService,
     private questionAnswerIndexService: QuestionAnswerIndexService,
+    private userScore: UserScoreService
   ) {
     this.initialSelectedCategoryData();
     this.subscribeToQuizData();
     this.getCurrentQuestionIndexValue();
     this.getCurrentAnswerIndexValue();
+    this.getCurrentUserScore();
    }
 
   // Setters
@@ -64,6 +69,12 @@ export class GameplayFlowService {
     });
   }
 
+  getCurrentUserScore() {
+    this.userScore.getUserScoreValue().subscribe((userScoreValue) => {
+      this.currentUserScore = userScoreValue;
+    });
+  }
+
   // Quiz Gameplay logic
 
   subscribeToQuizData() {
@@ -80,11 +91,12 @@ export class GameplayFlowService {
   isCorrectAnswer(userInputValue: string, categoryName: QuizDataModel[], nextSlide: IonSlides) {
       if (userInputValue === categoryName[this.currentAnswerIndexValue].questionData) {
         this.toastNotification.isValidAnswer('Correct answer!', 'success');
-        this.isEndgame(this.currentQuestionIndexValue, categoryName);
-        this.delayNextSlideAfterCorrectAnswer(userInputValue, nextSlide);
+        this.userScore.updateUserScoreValue(this.currentUserScore + 1);
       } else {
         this.toastNotification.isValidAnswer('Wrong answer.', 'danger');
       }
+      this.isEndgame(this.currentQuestionIndexValue, categoryName);
+      this.delayNextSlideAfterCorrectAnswer(userInputValue, nextSlide);
   }
 
   isEndgame(currentQuestionIndexValue: number, quizCategory: QuizDataModel[]) {
